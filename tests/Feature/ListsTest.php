@@ -51,11 +51,9 @@ class ListsTest extends TestCase
   {
     $user = factory('App\User')->create();
     $list = factory('App\Lists')->create(['user_id' => $user->id]);
-    $list->update([
-      'title' => 'edited title'
-    ]);
     $info = [
       'api_token' => $user->api_token,
+      'title' => 'edited title'
     ];
     $this->json('put', "api/list/{$list->id}/edit", $info)
         ->assertJson([

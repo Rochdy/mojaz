@@ -7,7 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 class RegisterUser extends FormRequest
 {
 
-    protected $redirect = "/login#form1";
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -32,12 +31,4 @@ class RegisterUser extends FormRequest
         ];
     }
 
-    public function response(array $errors)
-    {
-      return redirect('/dd');
-      return response()->json([
-        'code' => '404',
-        'errors' => $errors,
-      ]);
-    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ListRequest;
 use Auth;
 use App\Lists;
 use Validator;
@@ -21,7 +22,7 @@ class ListsController extends Controller
       return response()->json($user->lists);
     }
 
-    public function create(Request $request)
+    public function create(ListRequest $request)
     {
         $user = Auth::guard('api')->user();
         $list = $user->lists()->create($request->all());
@@ -33,7 +34,7 @@ class ListsController extends Controller
         return response()->json($list->items);
     }
 
-    public function edit(Request $request, Lists $list)
+    public function edit(ListRequest $request, Lists $list)
     {
       $list->update($request->all());
       return response()->json($list, 200);

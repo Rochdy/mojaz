@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterUser;
+use App\Http\Requests\LoginUser;
 use App\User;
 use Validator;
 use Auth;
@@ -11,17 +12,8 @@ use Auth;
 class UserController extends Controller
 {
 
-    public function login(Request $request)
+    public function login(LoginUser $request)
     {
-      $validator = Validator::make($request->all(), [
-        'email' => 'required|email',
-        'password' => 'required',
-      ]);
-
-      if ($validator->fails()) {
-        return response()->json($validator->errors()->all(), 400);
-      }
-
       if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
         $user = Auth::user();
         return response()->json([
@@ -35,16 +27,8 @@ class UserController extends Controller
 
     }
 
-    public function register(Request $request)
+    public function register(RegisterUser $request)
     {
-      $validator = Validator::make($request->all(), [
-        'email' => 'required|email|max:255|unique:users',
-        'username' => 'required',
-        'password' => 'required',
-      ]);
-      if ($validator->fails()) {
-        return response()->json($validator->errors()->all(), 400);
-      }
       $user = User::create([
         'username' => $request->username,
         'email' => $request->email,

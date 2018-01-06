@@ -29,11 +29,14 @@ class RegisterTest extends TestCase
       ];
 
       $this->json('post', '/api/register', $info)
-          ->assertStatus(400)
-          ->assertJson([
-            "The email field is required.",
-            "The username field is required.",
-            "The password field is required."
+          ->assertStatus(422)
+          ->assertJsonStructure([
+            'message',
+            'errors' => [
+              'email',
+              'username',
+              'password'
+            ]
           ]);
     }
 
@@ -46,9 +49,12 @@ class RegisterTest extends TestCase
       ];
 
       $this->json('post', '/api/register', $info)
-          ->assertStatus(400)
-          ->assertJson([
-              "The email must be a valid email address."
+          ->assertStatus(422)
+          ->assertJsonStructure([
+            'message',
+            'errors' => [
+              'email',
+            ]
           ]);
     }
 
@@ -62,10 +68,13 @@ class RegisterTest extends TestCase
       ];
 
       $this->json('post', '/api/register', $info)
-          ->assertStatus(400)
-          ->assertJson([
-              "The email has already been taken."
-          ]);
+        ->assertStatus(422)
+        ->assertJsonStructure([
+          'message',
+          'errors' => [
+            'email',
+          ]
+        ]);
     }
 
     public function test_register_successfully()
