@@ -11,6 +11,11 @@ use Validator;
 
 class ItemsController extends Controller
 {
+  public function __construct()
+  {
+    this->middleware('auth:api');
+  }
+
   public function create(Request $request, Lists $list)
   {
     $item = $list->items()->create($request->all());

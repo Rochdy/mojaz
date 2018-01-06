@@ -60,7 +60,8 @@ class ListsTest extends TestCase
     $this->json('put', "api/list/{$list->id}/edit", $info)
         ->assertJson([
           'title' => 'edited title',
-        ]);
+        ])
+        ->assertStatus(200);
   }
 
   public function test_list_deleted_successfully()
