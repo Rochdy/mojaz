@@ -37,8 +37,8 @@ vendor/bin/phpunit
 | Show Lists | /api/list/ | POST | `api_token`| `lists[]` |
 | Show List items | /api/list/{list} | POST | `api_token`| `items[]` |
 | Create List | /api/list/create | POST | `api_token` `title`| `code: 201` `list` |
-| Edit List | /api/list/{list}/edit | PUT | `api_token`| `code: 200` `list` |
+| Edit List | /api/list/{list}/edit | PUT | `api_token` `title`| `code: 200` `list` |
 | Delete List | /api/list/{list}/delete | DELETE | `api_token`| `code: 204`|
-| Create Item | /api/list/{list}/item | POST | `api_token`| `code: 201` `list` |
-| Edit Item | /api/list/{list}/item/{item}/delete | PUT | `api_token`| `code: 200` `list` |
+| Create Item | /api/list/{list}/item | POST | `api_token` `body`| `code: 201` `item` |
+| Edit Item | /api/list/{list}/item/{item}/delete | PUT | `api_token` `body`| `code: 200` `item` |
 | Delete Item | /api/list/{list}/item/{item}/delete | DELETE | `api_token`| `code: 204` |
