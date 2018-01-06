@@ -1,8 +1,12 @@
 # Mojaz Back-end Developer Assignment
 
+* [Requirements](#requirements)
 * [Installation](#installation)
 * [Tests](#tests)
 * [API Endpoints](#apis)
+
+## Requirements
+This project built using **laravel 5.5**, so your php version must be >= **7.0**
 
 ## Installation
 1. Clone the source code. `git clone https://github.com/Rochdy/mojaz.git`
