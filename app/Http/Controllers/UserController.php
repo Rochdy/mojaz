@@ -14,7 +14,7 @@ class UserController extends Controller
 
     public function login(LoginUser $request)
     {
-      if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+      if(Auth::attempt(['username' => $request->username, 'password' => $request->password])){
         $user = Auth::user();
         return response()->json([
           'user' => $user->toArray()

@@ -32,7 +32,7 @@ vendor/bin/phpunit
 ## APIs
 | Name | URL| Method | Required | Success Response |
 |------|----|--------|----------|----------|
-| Register | /api/register/ | POST | `username` `password` `password`| `code: 201` `user`|
+| Register | /api/register/ | POST | `username` `email` `password`| `code: 201` `user`|
 | Login | /api/login/ | POST | `username` `password`| `code: 200` `user`|
 | Show Lists | /api/list/ | POST | `api_token`| `lists[]` |
 | Show List items | /api/list/{list} | POST | `api_token`| `items[]` |

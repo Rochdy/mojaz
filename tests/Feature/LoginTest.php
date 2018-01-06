@@ -25,7 +25,7 @@ class LoginTest extends TestCase
     {
 
       $wrongInfo = [
-        'email' => $this->faker->email,
+        'username' => 'simple wrong',
         'password' => $this->faker->randomNumber(6)
       ];
 
@@ -40,11 +40,11 @@ class LoginTest extends TestCase
     public function test_login_is_successful()
     {
       $user = factory('App\User')->create([
-          'email' => 'ahmed@gmail.com',
+          'username' => 'ahmed',
           'password' => bcrypt('123456'),
       ]);
 
-      $info = ['email' => 'ahmed@gmail.com', 'password' => '123456'];
+      $info = ['username' => 'ahmed', 'password' => '123456'];
       $this->json('post', '/api/login', $info)
           ->assertStatus(200)
           ->assertJsonStructure([
