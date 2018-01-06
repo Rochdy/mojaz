@@ -30,7 +30,9 @@ vendor/bin/phpunit
 ```
 
 ## APIs
+
 **[Header] Accept:application/json**
+
 | Name | URL| Method | Required | Success Response |
 |------|----|--------|----------|----------|
 | Register | /api/register/ | POST | `username` `email` `password`| `code: 201` `user`|
