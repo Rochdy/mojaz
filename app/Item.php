@@ -13,6 +13,6 @@ class Item extends Model
 
   public function list()
   {
-    $this->belongsTo('App\Lists');
+    return $this->belongsTo('App\Lists');
   }
 }

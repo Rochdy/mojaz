@@ -13,6 +13,11 @@ class Lists extends Model
 
     public function owner()
     {
-      $this->belongsTo('App\User');
+      return $this->belongsTo('App\User');
+    }
+
+    public function items()
+    {
+      return $this->hasMany('App\Item','list_id');
     }
 }

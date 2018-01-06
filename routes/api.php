@@ -19,15 +19,22 @@ use Illuminate\Http\Request;
 //
 // Route::fallback('UserController@login');
 
+Route::group(['middleware' => ['auth:api']], function () {
+    Route::get('/test', function (Request $request) {
+         return response()->json(['name' => 'test']);
+    });
+});
+
+
 Route::post('/login', 'UserController@login');
 Route::post('/register', 'UserController@register');
 
-Route::get('/list','ListsController@showAll');
-Route::get('/list/{list}','ListsController@showAll');
-Route::post('/list/create','ListsController@showAll');
-Route::put('/list/{list}/edit','ListsController@showAll');
-Route::delete('/list/{list}/delete','ListsController@showAll');
+Route::post('/list','ListsController@showAll');
+Route::post('/list/create','ListsController@create');
+Route::post('/list/{list}','ListsController@showItems');
+Route::put('/list/{list}/edit','ListsController@edit');
+Route::delete('/list/{list}/delete','ListsController@delete');
 
-Route::post('/list/{list}/item','ListsController@showAll');
-Route::put('/list/{list}/item/{item}/edit','ListsController@showAll');
-Route::delete('/list/{list}/item/{item}/edit','ListsController@showAll');
+Route::post('/list/{list}/item','ItemsController@create');
+Route::put('/list/{list}/item/{item}/edit','ItemsController@edit');
+Route::delete('/list/{list}/item/{item}/delete','ItemsController@delete');
